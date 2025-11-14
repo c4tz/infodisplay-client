@@ -1,0 +1,11 @@
+[package]
+name = "infodisplay"
+version = "0.1.0"
+authors = ["c4tz <j.zink@outlook.com>"]
+edition = "2024"
+license = "MIT"
+
+[dependencies]
+headless_chrome = "1.0.17"
+image = "0.23.14"
+rust-it8951 = { git = "https://github.com/faassen/rust-it8951.git" }
