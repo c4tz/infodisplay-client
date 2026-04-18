@@ -46,12 +46,27 @@ target/debug/infodisplay
 
 ## Run
 
-SSH into your RPI, then just run:
-```shell
-nohup ./infodisplay &
-```
+1. Create the systemd config dir over SSH:
+   ```shell
+   ssh [RPI-IP] 'mkdir -p .config/systemd/user'
+   ```
 
-(I might create a systemd unit later on, providing the possbility to run at startup.)
+2. Copy the systemd user unit onto the Pi:
+   ```shell
+   scp infodisplay.service [RPI-IP]:.config/systemd/user/
+   ```
+
+3. SSH into your RPI and run:
+   ```shell
+   systemctl --user daemon-reload
+   systemctl --user enable infodisplay
+   systemctl --user start infodisplay
+   ```
+
+4. (If you need to see the logs):
+   ```shell
+   journalctl --user-unit=infodisplay
+   ```
 
 ## Disclaimer
 

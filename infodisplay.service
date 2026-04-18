@@ -1,0 +1,12 @@
+[Unit]
+Description=Infodisplay Service
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+ExecStart=%h/infodisplay
+Restart=on-failure
+RestartSec=5s
+
+[Install]
+WantedBy=default.target
